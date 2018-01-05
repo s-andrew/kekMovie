@@ -8,7 +8,10 @@ import com.kek.kekMovie.Repositories.*;
 import com.kek.kekMovie.Services.MovieService;
 import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +34,8 @@ public class MovieServiceImpl implements MovieService {
     private ProductionCompanyRepository productionCompanyRepository;
     @Autowired
     private CharacterRepository characterRepository;
+
+    private static final int PAGE_SIZE = 50;
 
     public Map<String, Set<Pair<Long, String>>> globalSearch(String string){
         Map<String, Set<Pair<Long, String>>> result = new HashMap<>();
@@ -63,11 +68,13 @@ public class MovieServiceImpl implements MovieService {
     }
 
 
-    public Iterable<Movie> getMovieByTitle(String title){ return movieRepository.findByTitleContainingOrOriginalTitleContaining(title, title); }
-    public Iterable<Movie> getAllMovies(){ return  movieRepository.findAll(); }
-    public Character getCharacter(long id){return characterRepository.findOne(id);}
     public Movie getMovie(long id){return movieRepository.findOne(id);}
-    public Person getPerson(long id){return personRepository.findOne(id);}
-    public ProductionCompany getProductionCompany(long id){return productionCompanyRepository.findOne(id);}
 
+
+    @Transactional
+    public Iterable<Movie> getMovies(Integer pageNumber){
+        PageRequest request = new PageRequest(pageNumber - 1, PAGE_SIZE, Sort.Direction.ASC, "id");
+        return movieRepository.findAll(request).getContent();
+    }
 }
+
