@@ -5,7 +5,7 @@ import com.kek.kekMovie.DTO.Person;
 import com.kek.kekMovie.DTO.ProductionCompany;
 import com.kek.kekMovie.DTO.Character;
 import com.kek.kekMovie.Repositories.*;
-import com.kek.kekMovie.Services.movieService;
+import com.kek.kekMovie.Services.MovieService;
 import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import java.util.stream.StreamSupport;
 
 
 @Service
-public class movieServiceImpl implements movieService {
+public class MovieServiceImpl implements MovieService {
     @Autowired
     private MovieRepository movieRepository;
     @Autowired

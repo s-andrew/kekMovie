@@ -9,7 +9,7 @@ import javafx.util.Pair;
 import java.util.Map;
 import java.util.Set;
 
-public interface movieService {
+public interface MovieService {
     // Find anything
     Map<String, Set<Pair<Long, String>>> globalSearch(String string);
 
