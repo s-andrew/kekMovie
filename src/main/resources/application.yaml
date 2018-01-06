@@ -5,9 +5,9 @@ security:
     realm: KekMovie
 spring:
   datasource:
-    url: jdbc:sqlserver://127.0.0.1:1433;databaseName=DEMO_SPRING_SECURITU
-    username: <Имя входа>
-    password: <Пароль>
+    url: jdbc:sqlserver://127.0.0.1:1433;databaseName=FILM_SERVICE
+    username: sa
+    password: 3korif8245ef
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     show-sql: true

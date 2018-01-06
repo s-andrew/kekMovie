@@ -28,8 +28,33 @@ public class MovieApi {
     }
 
 
-    @GetMapping("/global_search/{string}")
-    public Map<String, Set<Pair<Long, String>>> test(@PathVariable(value = "string") String string){
-        return movieService.globalSearch(string);
+    @GetMapping("/global_search")
+    public Map<String, Set<Pair<Long, String>>> test(@ModelAttribute(value = "f") String find){
+        return movieService.globalSearch(find);
+    }
+
+    @GetMapping("/movies_by_character/{id}")
+    public Movie getMoviesByCharacter(@PathVariable(value = "id") Long id){
+        return movieService.getMoviesByCharacter(id);
+    }
+
+    @GetMapping("movies_by_genry/{id}")
+    public Iterable<Pair<Long, String>> getMovieByGenry(@PathVariable(value = "id") Long id){
+        return movieService.getMoviesByGenry(id);
+    }
+
+    @GetMapping("movies_by_keyword/{id}")
+    public Iterable<Pair<Long, String>> getMoviesByKeyword(@PathVariable(value = "id") Long id){
+        return movieService.getMoviesByKeyword(id);
+    }
+
+    @GetMapping("movies_by_person/{id}")
+    public Map<String, Set<Pair<Long, String>>> getMoviesByPerson(@PathVariable(value = "id") Long id){
+        return movieService.getMoviesByPerson(id);
+    }
+
+    @GetMapping("movies_by_production_company/{id}")
+    public Iterable<Pair<Long, String>> getMoviesByProductionCompany(@PathVariable(value = "id") Long id){
+        return movieService.getMoviesByProductionCompany(id);
     }
 }
