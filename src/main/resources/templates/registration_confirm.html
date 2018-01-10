@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Confirm</title>
+</head>
+<body th:inline="text">
+<h2>Registration confirm</h2>
+<em>Это типо письмо, которое должно прийти на указаную почту([[${email}]]).</em>
+<div class="">
+    <p>
+        Hello [[${username}]]!<br/>
+        Please verify your email address.<br/>
+    </p>
+    <p><a th:href="${link}">Verify email address</a></p>
+</div>
+</body>
+</html>

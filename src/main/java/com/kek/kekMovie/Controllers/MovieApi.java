@@ -4,6 +4,7 @@ import com.kek.kekMovie.DTO.Movie;
 import com.kek.kekMovie.Services.MovieService;
 import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -11,6 +12,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/movie_api")
+@PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
 public class MovieApi {
 
     @Autowired

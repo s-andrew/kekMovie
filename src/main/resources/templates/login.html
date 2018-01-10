@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'/>
+    <link href='https://fonts.googleapis.com/css?family=PT Sans' rel='stylesheet'/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <title>Welcome!</title>
+</head>
+<body>
+    <main class="loginPage">
+        <h2>Welcome</h2>
+        <p>Login or <a href="/registration">registration</a> to continue</p>
+        <form th:action="@{/login}" method="post" class="kekForm">
+            <div class="kekForm__row"><label> User name: <input type="text" name="username"/> </label></div>
+            <div class="kekForm__row"><label> Password: <input type="password" name="password"/> </label></div>
+            <div class="kekForm__row"><button type="submit">Log In</button></div>
+        </form>
+            <p th:if="${param.error}">
+                Invalid username and password.
+            </p>
+            <p th:if="${param.logout}">
+                You have been logged out.
+            </p>
+    </main>
+</body>
+</html>
