@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"><head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
@@ -10,15 +12,18 @@
     <title>Document</title>
 </head>
 <body>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Sign Out</button>
+    </form>
     <div class="wrapper">
-       <form action="" class="searchForm">
+       <form id="searchForm" action="#" class="searchForm">
             <p id="info" class="searchForm__row">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam quisquam molestias ea error adipisci eos impedit ipsa id eligendi exercitationem.
+                Введите (полностью или частично) название фильма, имя персоонажа или реального человека, жанр, ключевое слово или название кинокомпании.
             </p>
            <div class="searchForm__row">
                <input id="searchField" type="text" class="searchForm__searchField"/>
                <button id="searchBtn" type="button">Search</button>
-               <button id="luckyBtn" type="button">Lucky</button>
+               <!--<button id="luckyBtn" type="button">Lucky</button>-->
            </div>
        </form>
        <div id="result">
