@@ -16,32 +16,37 @@ function addResultRow(parentElement, cathegory, name, id){
     button.setAttribute("data-id", cathegory + "/" + id);
     button.innerText = name;
     button.addEventListener("click", function(){
-        resultDiv.innerHTML = "";
-        fetch("/movie_api/" + cathegory + "/" + id, {credentials: "include", method: "get"})
-            .then(response => response.json())
-            .then(function(data){
-                DATA = data;
-                if (cathegory == "movies_by_character" || cathegory == "movies")
-                    movieResultProcess(data);
-                if (cathegory == "movies_by_genry" || cathegory == "movies_by_keyword" || cathegory == "movies_by_production_company"){
-                    let h2 = document.createElement("h2");
-                    h2.innerText = cathegory;
-                    resultDiv.appendChild(h2);
-                    let ul = document.createElement("ul");
-                    data.forEach(element => {
-                        addResultRow(ul, "movies", element["value"], element["key"]);
-                    });
-                    resultDiv.appendChild(ul);
-                }
-                if (cathegory == "movies_by_person")
-                    personResultProcess(data);
-            });
+        getData(cathegory, id);
     });
     li.appendChild(button);
     parentElement.appendChild(li);
 }
 
 searchBtn.addEventListener("click", search);
+
+
+function getData(cathegory, id){
+    resultDiv.innerHTML = "";
+    fetch("/movie_api/" + cathegory + "/" + id, {credentials: "include", method: "get"})
+    .then(response => response.json())
+    .then(function(data){
+        DATA = data;
+        if (cathegory == "movies_by_character" || cathegory == "movies")
+            movieResultProcess(data);
+        if (cathegory == "movies_by_genry" || cathegory == "movies_by_keyword" || cathegory == "movies_by_production_company"){
+            let h2 = document.createElement("h2");
+            h2.innerText = cathegory;
+            resultDiv.appendChild(h2);
+            let ul = document.createElement("ul");
+            data.forEach(element => {
+                addResultRow(ul, "movies", element["value"], element["key"]);
+            });
+            resultDiv.appendChild(ul);
+        }
+        if (cathegory == "movies_by_person")
+            personResultProcess(data);
+    });
+}
 
 
 function search(){
@@ -86,6 +91,7 @@ function movieResultProcess(data){
     resultDiv.innerHTML =
     "<h2>" + data["title"] + "</h2>" +
     "<p>" + data["overview"] + "</p>" +
+    "<h2>Info</h2>" +
     "<table>" +
     "   <tbody>" +
     "       <tr>" +
@@ -109,7 +115,51 @@ function movieResultProcess(data){
     "           <td>" + data["voteAverage"] + "</td>" +
     "       </tr>" +
     "   </tbody>" +
-    "</table>";
+    "</table>" +
+    "<h2>Directors</h2>";
+    let directorsUl = document.createElement("ul")
+    data["directors"].forEach(element => {
+        let li = document.createElement("li");
+        let btn = document.createElement("button");
+        btn.innerText = element["name"];
+        btn.addEventListener("click", function(){
+            getData("movies_by_person", element["id"]);
+        });
+        li.appendChild(btn);
+        directorsUl.appendChild(li);
+    });
+    resultDiv.appendChild(directorsUl);
+
+
+    resultDiv.innerHTML += "<h2>Production companies</h2>";
+    let productionCompaniesUl = document.createElement("ul");
+    data["productionCompanies"].forEach(element => {
+        let li = document.createElement("li");
+        let btn = document.createElement("button");
+        btn.innerText = element["name"];
+        btn.addEventListener("click", function(){
+            getData("movies_by_production_company", element["id"]);
+        });
+        li.appendChild(btn);
+        productionCompaniesUl.appendChild(li);
+    });
+    resultDiv.appendChild(productionCompaniesUl);
+
+
+    resultDiv.innerHTML += "<h2>Cast</h2>";
+    let castUl = document.createElement("ul");
+    data["characters"].forEach(element => {
+       let li = document.createElement("li");
+       li.innerText = element["name"] + " : ";
+       let btn = document.createElement("button");
+       btn.innerText = element["actor"]["name"]; 
+       btn.addEventListener("click", function(){
+           getData("movies_by_person", element["actor"]["id"]);
+       });
+       li.appendChild(btn);
+       castUl.appendChild(li);
+    });
+    resultDiv.appendChild(castUl);
 
 }
 
