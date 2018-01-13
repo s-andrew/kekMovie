@@ -4,9 +4,15 @@
     padding: 0; */
 }
 body{
+    padding: 0;
+    margin: 0;
     font-family: 'PT Sans';
     background-color: #efefef;
     font-size: 18px;
+}
+main{
+    width: 700px;
+    margin: 0 auto;
 }
 h1, h2, h3{
     font-family: 'Roboto';
@@ -103,4 +109,41 @@ button:hover{
 
 .searchForm button{
     width: 100px;
+}
+
+
+.errorMessage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh + 65px);
+    background-image: url(../image/fuck_cat.png);
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-size: 150px;
+}
+
+.errorMessage h2{
+    font-size: 5em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.errorMessage p{
+    font-size: 2em;
+    margin: 0 0 250px;
+    text-align: center;
+}
+
+.errorMessage a{
+    font-size: 1.5rem;
+}
+
+
+table{
+    border-collapse: collapse;
+}
+td{
+    border: 1px solid black;
 }

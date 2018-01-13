@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Add user page</title>
+</head>
+<body>
+<form th:action="@{/users}" method="post">
+    <div>
+        <label for="username">User Name: </label>
+        <input id="username" type="text" name="username"/>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input id="password" type="password" name="password"/>
+    </div>
+    <div>
+        <label for="password_confirm">Password confirm:</label>
+        <input id="password_confirm" type="password" name="password_confirm"/>
+    </div>
+    <div>
+        <label for="email">Email: </label>
+        <input id="email" type="text" name="email"/>
+    </div>
+    <div>
+        <input type="submit" value="Sign In"/>
+    </div>
+</form>
+</body>
+</html>
