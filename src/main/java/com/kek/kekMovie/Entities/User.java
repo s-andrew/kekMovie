@@ -1,4 +1,4 @@
-package com.kek.kekMovie.DTO;
+package com.kek.kekMovie.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

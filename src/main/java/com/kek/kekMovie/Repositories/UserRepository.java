@@ -1,6 +1,6 @@
 package com.kek.kekMovie.Repositories;
 
-import com.kek.kekMovie.DTO.User;
+import com.kek.kekMovie.Entities.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -89,27 +89,6 @@ button:hover{
     cursor: pointer;
 }
 
-.searchForm{
-    max-width: 900px;
-    width: 700px;
-    font-size: 18px;
-}
-
-.searchForm button{
-    margin: 0 0 0 .5rem;
-}
-.searchForm__row{
-    display: flex;
-    justify-content: center;
-}
-
-.searchForm__searchField{
-    width: 100%;
-}
-
-.searchForm button{
-    width: 100px;
-}
 
 
 .errorMessage{
@@ -147,3 +126,4 @@ table{
 td{
     border: 1px solid black;
 }
+

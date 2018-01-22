@@ -1,14 +1,17 @@
 package com.kek.kekMovie.Services.Implemaentations;
 
-import com.kek.kekMovie.DTO.Role;
-import com.kek.kekMovie.DTO.User;
-import com.kek.kekMovie.DTO.VerificationToken;
+import com.kek.kekMovie.Entities.Role;
+import com.kek.kekMovie.Entities.User;
+import com.kek.kekMovie.Entities.VerificationToken;
 import com.kek.kekMovie.Repositories.RoleRepository;
 import com.kek.kekMovie.Repositories.UserRepository;
 import com.kek.kekMovie.Repositories.VerificationTokenRepository;
 import com.kek.kekMovie.Services.UserService;
 import com.kek.kekMovie.Services.Exceptions.EmailExistsException;
+import com.sun.media.sound.ModelMappedInstrument;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
@@ -26,6 +29,7 @@ public class UserServiceImpl implements UserService {
     RoleRepository roleRepository;
     @Autowired
     VerificationTokenRepository tokenRepository;
+
 //    @Autowired
 //    private JavaMailSender mailSender;
 

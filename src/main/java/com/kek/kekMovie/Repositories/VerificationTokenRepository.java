@@ -1,7 +1,7 @@
 package com.kek.kekMovie.Repositories;
 
 
-import com.kek.kekMovie.DTO.VerificationToken;
+import com.kek.kekMovie.Entities.VerificationToken;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

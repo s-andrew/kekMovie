@@ -1,7 +1,7 @@
 package com.kek.kekMovie.Repositories;
 
 
-import com.kek.kekMovie.DTO.Role;
+import com.kek.kekMovie.Entities.Role;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

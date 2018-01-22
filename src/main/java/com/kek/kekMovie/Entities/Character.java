@@ -1,4 +1,4 @@
-package com.kek.kekMovie.DTO;
+package com.kek.kekMovie.Entities;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -16,8 +16,6 @@ public class Character {
     private long id;
 
     private String name;
-    @Column(name = "order_")
-    private int order;
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
@@ -44,8 +42,8 @@ public class Character {
         return name + " (" + movie.getTitle() + ")";
     }
 
-    public int getOrder() {
-        return order;
+    public Person getActor() {
+        return actor;
     }
 
     public Movie getMovie() { return movie; }

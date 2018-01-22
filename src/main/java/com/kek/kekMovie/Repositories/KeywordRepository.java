@@ -1,6 +1,6 @@
 package com.kek.kekMovie.Repositories;
 
-import com.kek.kekMovie.DTO.Keyword;
+import com.kek.kekMovie.Entities.Keyword;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

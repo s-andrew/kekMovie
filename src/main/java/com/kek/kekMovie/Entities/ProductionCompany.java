@@ -1,4 +1,4 @@
-package com.kek.kekMovie.DTO;
+package com.kek.kekMovie.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -6,30 +6,31 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "genries")
-public class Genry {
+@Table(name = "production_companies")
+public class ProductionCompany {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private String value;
+    private String name;
 
-    @ManyToMany(mappedBy = "genries")
+    @ManyToMany(mappedBy = "productionCompanies")
     @JsonBackReference
     private Set<Movie> movies;
 
-    protected Genry() {}
+    protected ProductionCompany(){}
 
     public Long getId() {
         return id;
     }
 
-    public String getValue() {
-        return value;
+    public String getName() {
+        return name;
     }
 
     public Set<Movie> getMovies() {
         return movies;
     }
 }
+

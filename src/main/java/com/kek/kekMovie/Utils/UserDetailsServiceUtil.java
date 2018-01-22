@@ -1,6 +1,6 @@
 package com.kek.kekMovie.Utils;
 
-import com.kek.kekMovie.DTO.User;
+import com.kek.kekMovie.Entities.User;
 import com.kek.kekMovie.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;

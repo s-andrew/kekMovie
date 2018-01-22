@@ -1,4 +1,4 @@
-package com.kek.kekMovie.DTO;
+package com.kek.kekMovie.Entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -23,6 +23,10 @@ public class Movie {
     private Date releaseDate;
     private String originalLanguage;
     private Integer voteAverage;
+
+    public List<Character> getCharacters() {
+        return characters;
+    }
 
     @OneToMany(mappedBy = "movie")
     @JsonManagedReference

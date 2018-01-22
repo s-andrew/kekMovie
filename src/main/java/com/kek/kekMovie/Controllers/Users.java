@@ -1,6 +1,6 @@
 package com.kek.kekMovie.Controllers;
 
-import com.kek.kekMovie.DTO.User;
+import com.kek.kekMovie.Entities.User;
 import com.kek.kekMovie.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

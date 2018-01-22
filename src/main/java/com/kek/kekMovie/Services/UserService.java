@@ -1,7 +1,7 @@
 package com.kek.kekMovie.Services;
 
-import com.kek.kekMovie.DTO.User;
-import com.kek.kekMovie.DTO.VerificationToken;
+import com.kek.kekMovie.Entities.User;
+import com.kek.kekMovie.Entities.VerificationToken;
 import com.kek.kekMovie.Services.Exceptions.EmailExistsException;
 
 public interface UserService {

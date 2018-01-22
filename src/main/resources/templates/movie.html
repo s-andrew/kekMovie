@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'/>
+    <link href='https://fonts.googleapis.com/css?family=PT Sans' rel='stylesheet'/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <title>Movie</title>
+</head>
+<body>
+    <main th:inline="text">
+        <h1 th:text="${movie.title}"></h1>
+        <p th:text="${movie.overview}"></p>
+        <h2>Directors</h2>
+        <ul th:each="director : ${movie.directors}">
+            <li th:text="${director.name}"></li>
+        </ul>
+        <h2>Production companies</h2>
+        <ul th:each="company : ${movie.productionCompanies}">
+            <li th:text="${company.name}"></li>
+        </ul>
+        <h2>Info</h2>
+        <table>
+            <tbody>
+            <tr>
+                <td>runtime</td>
+                <td th:text="${movie.runtime}"></td>
+            </tr>
+            <tr>
+                <td>budget</td>
+                <td th:text="${movie.budget}"></td>
+            </tr>
+            <tr>
+                <td>revenue</td>
+                <td th:text="${movie.revenue}"></td>
+            </tr>
+            <tr>
+                <td>releaseDate</td>
+                <td th:text="${movie.releaseDate}"></td>
+            </tr>
+            <tr>
+                <td>originalLanguage</td>
+                <td th:text="${movie.originalLanguage}"></td>
+            </tr>
+            <tr>
+                <td>voteAverage</td>
+                <td th:text="${movie.voteAverage}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <h2>Cast</h2>
+        <ul th:each="character : ${movie.characters}">
+            <li><strong th:text="${character.actor.name}"></strong> in cast <strong th:text="${character.name}"></strong></li>
+        </ul>
+    </main>
+</body>
+</html>

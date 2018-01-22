@@ -1,8 +1,13 @@
 package com.kek.kekMovie.Controllers;
 
-import com.kek.kekMovie.DTO.Movie;
+import com.kek.kekMovie.DTO.CharacterShortInfo;
+import com.kek.kekMovie.DTO.MovieApiResponse;
+import com.kek.kekMovie.Entities.Character;
+import com.kek.kekMovie.Entities.Movie;
+import com.kek.kekMovie.Repositories.CharacterRepository;
 import com.kek.kekMovie.Services.MovieService;
 import javafx.util.Pair;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -31,32 +36,30 @@ public class MovieApi {
 
 
     @GetMapping("/global_search")
-    public Map<String, Set<Pair<Long, String>>> test(@ModelAttribute(value = "f") String find){
-        return movieService.globalSearch(find);
-    }
-
-    @GetMapping("/movies_by_character/{id}")
-    public Movie getMoviesByCharacter(@PathVariable(value = "id") Long id){
-        return movieService.getMoviesByCharacter(id);
+    public MovieApiResponse globalSearch(@ModelAttribute(value = "f") String find){
+        if (!find.equals(""))
+            return movieService.globalSearch(find);
+        else
+            return null;
     }
 
     @GetMapping("movies_by_genry/{id}")
-    public Iterable<Pair<Long, String>> getMovieByGenry(@PathVariable(value = "id") Long id){
+    public MovieApiResponse getMovieByGenry(@PathVariable(value = "id") Long id){
         return movieService.getMoviesByGenry(id);
     }
 
     @GetMapping("movies_by_keyword/{id}")
-    public Iterable<Pair<Long, String>> getMoviesByKeyword(@PathVariable(value = "id") Long id){
+    public MovieApiResponse getMoviesByKeyword(@PathVariable(value = "id") Long id){
         return movieService.getMoviesByKeyword(id);
     }
 
     @GetMapping("movies_by_person/{id}")
-    public Map<String, Set<Pair<Long, String>>> getMoviesByPerson(@PathVariable(value = "id") Long id){
+    public MovieApiResponse getMoviesByPerson(@PathVariable(value = "id") Long id){
         return movieService.getMoviesByPerson(id);
     }
 
     @GetMapping("movies_by_production_company/{id}")
-    public Iterable<Pair<Long, String>> getMoviesByProductionCompany(@PathVariable(value = "id") Long id){
+    public MovieApiResponse getMoviesByProductionCompany(@PathVariable(value = "id") Long id){
         return movieService.getMoviesByProductionCompany(id);
     }
 }

@@ -1,6 +1,6 @@
 package com.kek.kekMovie.Repositories;
 
-import com.kek.kekMovie.DTO.Movie;
+import com.kek.kekMovie.Entities.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
